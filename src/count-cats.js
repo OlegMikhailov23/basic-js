@@ -1,7 +1,4 @@
 const CustomError = require("../extensions/custom-error");
-
-
-
 module.exports = function countCats(backyard) {
   const catEyes = '^^';
   let countCat = 0;
