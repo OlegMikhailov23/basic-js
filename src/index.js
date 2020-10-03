@@ -1,6 +1,6 @@
-const CustomError = require("../extensions/custom-error");
+let myArr = [ 1, 2, 3, '--double-next', 4, 5 ,'--double-next'];
 
-module.exports = function transform(arr) {
+const findIndex = (arr) => {
     let arrCopy = arr;
     for (let i = 0; i <= arrCopy.length; i++) {
         if (arrCopy[i] === `--discard-next`) {
@@ -26,5 +26,8 @@ module.exports = function transform(arr) {
             }
         }
     }
+    console.log(arrCopy);
     return arrCopy
-};
+}
+
+findIndex(myArr);
