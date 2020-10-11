@@ -1,36 +1,30 @@
-const chainMaker = {
-    res: [],
-    getLength() {
-        console.log(this.res.length)
-        return this.res.length
-    },
-    addLink(value) {
-        if (value === undefined) {
-            value = ' ';
+let currentDepth = 1;
+let result = 1;
+class DepthCalculator {
+
+    calculateDepth(arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].constructor === Array) {
+                currentDepth++
+                if (i === arr.length - 1) {
+                    if (result > currentDepth) {
+                        console.log('привет')
+                    } else {
+                        result++
+                        currentDepth = 1;
+                    }
+                }
+                calculateDepth(arr[i])
+            }
         }
-        this.res.push(`( ${value} )`);
-        return this
-    },
-    removeLink(position) {
-        if (position % 1 == 0) {
-            this.res.splice(position - 1, 1);
-            return this
-        } else {
-            this.res = [];
-            throw new Error('Wrong value of remove position');
-        }
-    },
-    reverseChain() {
-        this.res.reverse()
-        return this
-    },
-    finishChain() {
-        let resCopy = this.res.slice();
-        console.log(resCopy, resCopy.join('~~'));
-        this.res = [];
-        return resCopy.join('~~');
+        console.log(result);
+        return result
     }
 
-};
+}
 
-chainMaker.addLink('8.963').reverseChain().reverseChain().reverseChain().reverseChain().addLink({0: 'first', 1: 'second', 'length': 2}).reverseChain().addLink(3.14).addLink('DEF').reverseChain().finishChain()
+const depthCalc = new DepthCalculator();
+const { calculateDepth } = depthCalc;
+calculateDepth([1, 2, 3, [1], [[[],[[[[[]]]]],[]],4], 5, [1]]);
+
+
