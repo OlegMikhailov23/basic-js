@@ -1,6 +1,5 @@
-const CustomError = require("../extensions/custom-error");
 
-module.exports = function repeater(str, options) {
+const repeater = (str, options) => {
     let tempArr = [];
     let tempStr = '';
     !options.separator ? options.separator = '+' : '';
@@ -26,5 +25,9 @@ module.exports = function repeater(str, options) {
         tempArr.push(tempStr);
     }
     console.log(tempArr.join(''))
-    return tempArr.join('')
 };
+
+repeater('TESTstr', { repeatTimes: undefined, separator: 'ds', addition: 'ADD!', additionRepeatTimes: undefined, additionSeparator: ')))000' });
+
+// TESTstrADD!
+
